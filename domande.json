@@ -1,4 +1,4 @@
-{
+[{
     "question"      :   "Lady Oscar, Lady Oscar nell'azzurro dei tuoi occhi c'è l'arcobaleno..",
     "image"         :   "https://www.prettygeneration.it/wp-content/uploads/2017/08/Sai-completare-le-sigle-dei-cartoni-di-CRISTINA-DAVENA-QUIZ-2.jpg",
     "choices"       :   [
@@ -8,7 +8,7 @@
       "Lady Oscar, Lady Oscar, nella mischia tu non ci abbandonerai."
     ],
     "correct"       :   "Lady Oscar, Lady Oscar, chi lo sa se un giorno poi tu l'attraverserai.",
-    "explanation"   : "",
+    "explanation"   : ""
   },{
     "question"      :   "Se a Johnny gira e va...",
     "image"         :   "https://i.ytimg.com/vi/sIGN8w4njwU/hqdefault.jpg",
@@ -19,7 +19,7 @@
       "che strane cose fa"
     ],
     "correct"       :   "che strane cose fa",
-    "explanation"   : "",
+    "explanation"   : ""
   },
   {
     "question"      :   "Sailor Moon, corri per noi, scintillante Sailor Moon..",
@@ -31,7 +31,7 @@
       "Sailor Moon, vai dove vuoi, favolosa Sailor Moon."
     ],
     "correct"       :   "Sailor Moon, vai dove vuoi, sfavillante Sailor Moon.",
-    "explanation"   : "",
+    "explanation"   : ""
   },
   {
     "question"      :   ".... è quasi magia .....",
@@ -43,7 +43,7 @@
       "Jem"
     ],
     "correct"       :   "Johnny",
-    "explanation"   : "",
+    "explanation"   : ""
   },
   {
     "question"      :   "Con il rischio gioca sempre perchè...",
@@ -55,7 +55,7 @@
       "Sempre pronto all'avventura lui è!"
     ],
     "correct"       :   "Per lui nulla d'impossibile c'è!",
-    "explanation"   : "",
+    "explanation"   : ""
   },
   {
     "question"      :   "Due magiche gemelle, entrambe molto belle...",
@@ -67,7 +67,7 @@
       "san teletrasportarsi con abilità"
     ],
     "correct"       :   "san teletrasportarsi sempre qua e là",
-    "explanation"   : "",
+    "explanation"   : ""
   },
   {
     "question"      :   "Rossana dai pensaci un po tu, perchè così non se ne può più, sappiamo che non ti arrendi mai..",
@@ -79,7 +79,7 @@
       "E riprovi di nuovo finchè non lo fai"
     ],
     "correct"       :   "E provi e riprovi finchè ce la fai",
-    "explanation"   : "",
+    "explanation"   : ""
   },
   {
     "question"      :   "Ogni Pokémn è il più... Via i Pokémon!",
@@ -91,7 +91,7 @@
       "Sorprendente, grande e accattivante"
     ],
     "correct"       :   "Scoppiettante, furbo e accattivante",
-    "explanation"   : "",
+    "explanation"   : ""
   },
   {
     "question"      :   "perchè non c'è.. un drago che..",
@@ -103,7 +103,7 @@
       "sia furbo come te!"
     ],
     "correct"       :   "sia grande come te!",
-    "explanation"   : "",
+    "explanation"   : ""
   },
   {
     "question"      :   "Vinci la tua battaglia e vai..",
@@ -115,5 +115,6 @@
       "a comprare del latte."
     ],
     "correct"       :   "solo tu sai come farai.",
-    "explanation"   :   "",
+    "explanation"   :   ""
   }
+]
