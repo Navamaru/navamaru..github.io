@@ -170,3 +170,10 @@ img.question-image{
   text-align: center; 
   font-size: 2em;
 }
+#continua {
+  text-align: center;
+  margin-top: 24px;
+}
+#leaderboard {
+  outline: 1px solid gray;
+}
