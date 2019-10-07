@@ -220,6 +220,9 @@ jQuery(document).ready(function($){
     scoreboard.sort(function(a, b) {
       return parseFloat(b.points) - parseFloat(a.points);
     });
+    if(isHighscore){
+      savenewleaderboard();
+    }
     $(document.createElement('div')).attr('id', 'leaderboard').appendTo('#frame');
     $(document.createElement('h1')).text("Leader Board").attr('id', 'leadbTitle').appendTo('#leaderboard');
     //Description row
@@ -244,10 +247,20 @@ jQuery(document).ready(function($){
       $(document.createElement('p')).text(scoreboard[i].points).appendTo('#secondCell' +[i]);
       $(document.createElement('div')).attr('id', 'thirdCell'+[i]).appendTo('#leadRow'+[i]);
       $(document.createElement('p')).text(scoreboard[i].time).appendTo('#thirdCell' +[i]);
-      
     }
   }
-  
+  function savenewleaderboard(){
+    var xhr = new XMLHttpRequest();
+    xhr.open("POST", "score.json", true);
+    xhr.setRequestHeader("Content-Type", "application/json");
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+            debugger;
+        }
+    };
+    var data = JSON.stringify(scoreboard);
+    xhr.send(data);
+  }
   function addSelfToLeaderboard(){
     $(document.createElement('h2')).attr('id','greetings').text('Complimenti! Sei entrato nella Leaderboard!').insertAfter('#question');
     var name = prompt("Inserisci il tuo nome!");
