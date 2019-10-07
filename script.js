@@ -15,7 +15,6 @@ var perfectScore = 1000000;
 var scoreboard;
 var timePassed = 0;
 var myVar;
-var punteggi=[];
 /**
     * Set the information about your questions here. The correct answer string needs to match
     * the correct choice exactly, as it does string matching. (case sensitive)
@@ -343,9 +342,9 @@ xhr.send(data);
   }
   splashPage();
   caricaPunteggi(function(response) {
-      punteggi = JSON.parse(response);
+    scoreboard = JSON.parse(response);
    });
   caricaDomande(function(response) {
-  quizQuestions = JSON.parse(response);
+    quizQuestions = JSON.parse(response);
   });
 });
