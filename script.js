@@ -146,7 +146,7 @@ var quizQuestions = [
 ];
 
 /******* No need to edit below this line *********/
-jQuery(document).ready(function($){
+function loadall(){
 var currentquestion = 0, score = 0, submt=true, picked;
   
 const body = '{"rest_api_key":"'+apkey+'", "page": 1}';
