@@ -24,28 +24,28 @@ var punteggi=[];
 
 /******* No need to edit below this line *********/
 jQuery(document).ready(function($){
-var currentquestion = 0, score = 0, submt=true, picked;
-  
-function caricaPunteggi(callback) {
-  var xobj = new XMLHttpRequest();
-  xobj.overrideMimeType("application/json");
-  xobj.open('GET', 'score.json', true);
-  xobj.onreadystatechange = function () {
-  if (xobj.readyState == 4 && xobj.status == "200") {    
-    callback(xobj.responseText);
+  var currentquestion = 0, score = 0, submt=true, picked;
+    
+  function caricaPunteggi(callback) {
+    var xobj = new XMLHttpRequest();
+    xobj.overrideMimeType("application/json");
+    xobj.open('GET', 'score.json', true);
+    xobj.onreadystatechange = function () {
+    if (xobj.readyState == 4 && xobj.status == "200") {    
+      callback(xobj.responseText);
+    }
+  }};
+  function caricaDomande(callback) {
+    var xobj = new XMLHttpRequest();
+    xobj.overrideMimeType("application/json");
+    xobj.open('GET', 'domande.json', true);
+    xobj.onreadystatechange = function () {
+      if (xobj.readyState == 4 && xobj.status == "200") {    
+        callback(xobj.responseText);
+      }
+    };
+    xobj.send(null);  
   }
-};
-function caricaDomande(callback) {
-  var xobj = new XMLHttpRequest();
-  xobj.overrideMimeType("application/json");
-  xobj.open('GET', 'domande.json', true);
-  xobj.onreadystatechange = function () {
-  if (xobj.readyState == 4 && xobj.status == "200") {    
-    callback(xobj.responseText);
-  }
-};
-xobj.send(null);  
-}
   /**
          * This will add the individual choices for each question to the ul#choice-block
          *
@@ -343,7 +343,7 @@ xhr.send(data);
   caricaPunteggi(function(response) {
       punteggi = JSON.parse(response);
    });
-   caricaDomande(function(response) {
-    quizQuestions = JSON.parse(response);
-   });
+  caricaDomande(function(response) {
+  quizQuestions = JSON.parse(response);
+  });
 });
