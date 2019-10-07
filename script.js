@@ -248,9 +248,9 @@ jQuery(document).ready(function($){
       $(document.createElement('p')).text(scoreboard[i].points).appendTo('#secondCell' +[i]);
       $(document.createElement('div')).attr('id', 'thirdCell'+[i]).appendTo('#leadRow'+[i]);
       $(document.createElement('p')).text(scoreboard[i].time).appendTo('#thirdCell' +[i]);
-      $(document.createElement('div')).attr('id', 'continua').appendTo('#frame');
-      $(document.createElement('button')).text("Ricomincia").attr('id', 'buttonStart').click(function(){location.reload();}).appendTo('#continua');
     }
+    $(document.createElement('div')).attr('id', 'continua').appendTo('#frame');
+    $(document.createElement('button')).text("Ricomincia").attr('id', 'buttonStart').click(function(){location.reload();}).appendTo('#continua');
   }
   function savenewleaderboard(){
     var xhr = new XMLHttpRequest();
