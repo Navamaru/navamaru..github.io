@@ -15,6 +15,7 @@ var perfectScore = 1000000;
 var scoreboard;
 var timePassed = 0;
 var myVar;
+var scoreurl = "https://api.myjson.com/bins/1c00gj";
 /**
     * Set the information about your questions here. The correct answer string needs to match
     * the correct choice exactly, as it does string matching. (case sensitive)
@@ -28,7 +29,7 @@ jQuery(document).ready(function($){
   function caricaPunteggi(callback) {
     var xobj = new XMLHttpRequest();
     xobj.overrideMimeType("application/json");
-    xobj.open('GET', 'score.json', true);
+    xobj.open('GET', scoreurl, true);
     xobj.onreadystatechange = function () {
       if (xobj.readyState == 4 && xobj.status == "200") {    
         callback(xobj.responseText);
@@ -251,7 +252,7 @@ jQuery(document).ready(function($){
   }
   function savenewleaderboard(){
     var xhr = new XMLHttpRequest();
-    xhr.open("POST", "score.json", true);
+    xhr.open("PUT", scoreurl, true);
     xhr.setRequestHeader("Content-Type", "application/json");
     xhr.onreadystatechange = function () {
         if (xhr.readyState === 4 && xhr.status === 200) {
