@@ -248,6 +248,8 @@ jQuery(document).ready(function($){
       $(document.createElement('p')).text(scoreboard[i].points).appendTo('#secondCell' +[i]);
       $(document.createElement('div')).attr('id', 'thirdCell'+[i]).appendTo('#leadRow'+[i]);
       $(document.createElement('p')).text(scoreboard[i].time).appendTo('#thirdCell' +[i]);
+      $(document.createElement('div')).attr('id', 'continua').appendTo('#frame');
+      $(document.createElement('button')).text("Ricomincia").attr('id', 'buttonStart').click(function(){location.reload();}).appendTo('#continua');
     }
   }
   function savenewleaderboard(){
@@ -255,9 +257,6 @@ jQuery(document).ready(function($){
     xhr.open("PUT", scoreurl, true);
     xhr.setRequestHeader("Content-Type", "application/json");
     xhr.onreadystatechange = function () {
-        if (xhr.readyState === 4 && xhr.status === 200) {
-            debugger;
-        }
     };
     var data = JSON.stringify(scoreboard);
     xhr.send(data);
