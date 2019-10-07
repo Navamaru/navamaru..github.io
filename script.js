@@ -22,136 +22,23 @@ var punteggi=[];
     *
     */
 
-var quizQuestions = [
-  {
-    "question"      :   "Lady Oscar, Lady Oscar nell'azzurro dei tuoi occhi c'è l'arcobaleno..",
-    "image"         :   "https://www.prettygeneration.it/wp-content/uploads/2017/08/Sai-completare-le-sigle-dei-cartoni-di-CRISTINA-DAVENA-QUIZ-2.jpg",
-    "choices"       :   [
-      "Lady Oscar, Lady Oscar, chi lo sa se un giorno poi tu l'attraverserai.",
-      "Lady Oscar, Lady Oscar, tu combatti con destrezza ed agilità.",
-      "Lady Oscar, Lady Oscar, tu combatti con destrezza e non ti arrendi mai.",
-      "Lady Oscar, Lady Oscar, nella mischia tu non ci abbandonerai."
-    ],
-    "correct"       :   "Lady Oscar, Lady Oscar, chi lo sa se un giorno poi tu l'attraverserai.",
-    "explanation"   : "",
-  },{
-    "question"      :   "Se a Johnny gira e va...",
-    "image"         :   "https://i.ytimg.com/vi/sIGN8w4njwU/hqdefault.jpg",
-    "choices"       :   [
-      "lui via se ne andrà",
-      "lui vola con la forza del pensiero",
-      "lui gira in città",
-      "che strane cose fa"
-    ],
-    "correct"       :   "che strane cose fa",
-    "explanation"   : "",
-  },
-  {
-    "question"      :   "Sailor Moon, corri per noi, scintillante Sailor Moon..",
-    "image"         :   "https://www.prettygeneration.it/wp-content/uploads/2017/08/Sai-completare-le-sigle-dei-cartoni-di-CRISTINA-DAVENA-QUIZ-3.jpg",
-    "choices"       :   [
-      "Sailor Moon, vai dove vuoi, sfavillante Sailor Moon.",
-      "Sailor Moon, vola con noi, favolosa Sailor Moon.",
-      "Sailor Moon, corri con noi, oh grandiosa Sailor Moon.",
-      "Sailor Moon, vai dove vuoi, favolosa Sailor Moon."
-    ],
-    "correct"       :   "Sailor Moon, vai dove vuoi, sfavillante Sailor Moon.",
-    "explanation"   : "",
-  },
-  {
-    "question"      :   ".... è quasi magia .....",
-    "image"         :   "http://2.bp.blogspot.com/-atBOoSbBgPA/VI5feRBj-DI/AAAAAAAALH4/_bV8Lf3RYLo/s1600/KimagureOrangeRoad7.jpg",
-    "choices"       :   [
-      "Emi",
-      "Johnny",
-      "Creamie",
-      "Jem"
-    ],
-    "correct"       :   "Johnny",
-    "explanation"   : "",
-  },
-  {
-    "question"      :   "Con il rischio gioca sempre perchè...",
-    "image"         :   "https://nextstopreggio.it/wp-content/uploads/2018/09/ArsenioLupin.jpg",
-    "choices"       :   [
-      "Troppo astuto sempre lui è!",
-      "Per lui nulla d'impossibile c'è!",
-      "Coraggioso e temerario lui è!",
-      "Sempre pronto all'avventura lui è!"
-    ],
-    "correct"       :   "Per lui nulla d'impossibile c'è!",
-    "explanation"   : "",
-  },
-  {
-    "question"      :   "Due magiche gemelle, entrambe molto belle...",
-    "image"         :   "https://www.mammecreative.it/wp-content/uploads/2018/04/Terry-e-Maggie-quiz-trivia.004.jpeg",
-    "choices"       :   [
-      "san teletrasportarsi sempre qua e là",
-      "san teletrasportarsi con facilità",
-      "san disegnare il mondo con la verità",
-      "san teletrasportarsi con abilità"
-    ],
-    "correct"       :   "san teletrasportarsi sempre qua e là",
-    "explanation"   : "",
-  },
-  {
-    "question"      :   "Rossana dai pensaci un po tu, perchè così non se ne può più, sappiamo che non ti arrendi mai..",
-    "image"         :   "https://www.hallofseries.com/wp-content/uploads/2016/10/rossana_copertina-758x426.jpg",
-    "choices"       :   [
-      "E provi e riprovi finchè ce la fai",
-      "E provi e riprovi finchè non lo fai",
-      "E riprovi e riprovi finchè vincerai",
-      "E riprovi di nuovo finchè non lo fai"
-    ],
-    "correct"       :   "E provi e riprovi finchè ce la fai",
-    "explanation"   : "",
-  },
-  {
-    "question"      :   "Ogni Pokémn è il più... Via i Pokémon!",
-    "image"         :   "https://i.ytimg.com/vi/nTg7WA5_g90/hqdefault.jpg",
-    "choices"       :   [
-      "Sorprendente, grande e combattente",
-      "Sorprendente, furbo e accattivante",
-      "Scoppiettante, furbo e accattivante",
-      "Sorprendente, grande e accattivante"
-    ],
-    "correct"       :   "Scoppiettante, furbo e accattivante",
-    "explanation"   : "",
-  },
-  {
-    "question"      :   "perchè non c'è.. un drago che..",
-    "image"         :   "https://www.socialup.it/wp-content/uploads/2015/09/dragon-ball-1200x674.jpg",
-    "choices"       :   [
-      "sia forte come te!",
-      "sia grande come te!",
-      "sia in gamba come te!",
-      "sia furbo come te!"
-    ],
-    "correct"       :   "sia grande come te!",
-    "explanation"   : "",
-  },
-  {
-    "question"      :   "Vinci la tua battaglia e vai..",
-    "image"         :   "https://toonitalia.org/wp-content/uploads/2017/10/Pokemon-Johto-League-Champions-1.png",
-    "choices"       :   [
-      "corri e non ti stancare mai.",
-      "gli incontri non finiranno mai.",
-      "solo tu sai come farai.",
-      "a comprare del latte."
-    ],
-    "correct"       :   "solo tu sai come farai.",
-    "explanation"   :   "",
-  }
-];
-
 /******* No need to edit below this line *********/
 jQuery(document).ready(function($){
 var currentquestion = 0, score = 0, submt=true, picked;
-    
+  
 function caricaPunteggi(callback) {
   var xobj = new XMLHttpRequest();
   xobj.overrideMimeType("application/json");
   xobj.open('GET', 'score.json', true);
+  xobj.onreadystatechange = function () {
+  if (xobj.readyState == 4 && xobj.status == "200") {    
+    callback(xobj.responseText);
+  }
+};
+function caricaDomande(callback) {
+  var xobj = new XMLHttpRequest();
+  xobj.overrideMimeType("application/json");
+  xobj.open('GET', 'domande.json', true);
   xobj.onreadystatechange = function () {
   if (xobj.readyState == 4 && xobj.status == "200") {    
     callback(xobj.responseText);
@@ -455,5 +342,8 @@ xhr.send(data);
   splashPage();
   caricaPunteggi(function(response) {
       punteggi = JSON.parse(response);
+   });
+   caricaDomande(function(response) {
+    quizQuestions = JSON.parse(response);
    });
 });
