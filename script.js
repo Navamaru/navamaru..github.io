@@ -25,16 +25,18 @@ var punteggi=[];
 /******* No need to edit below this line *********/
 jQuery(document).ready(function($){
   var currentquestion = 0, score = 0, submt=true, picked;
-    
+      
   function caricaPunteggi(callback) {
     var xobj = new XMLHttpRequest();
     xobj.overrideMimeType("application/json");
     xobj.open('GET', 'score.json', true);
     xobj.onreadystatechange = function () {
-    if (xobj.readyState == 4 && xobj.status == "200") {    
-      callback(xobj.responseText);
-    }
-  }};
+      if (xobj.readyState == 4 && xobj.status == "200") {    
+        callback(xobj.responseText);
+      }
+    };
+    xobj.send(null);  
+  }
   function caricaDomande(callback) {
     var xobj = new XMLHttpRequest();
     xobj.overrideMimeType("application/json");
