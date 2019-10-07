@@ -457,4 +457,4 @@ xhr.send(data);
   }
   splashPage();
   caricaPunteggi();
-});
+};
