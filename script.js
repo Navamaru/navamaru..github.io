@@ -147,9 +147,7 @@ var quizQuestions = [
 /******* No need to edit below this line *********/
 jQuery(document).ready(function($){
 var currentquestion = 0, score = 0, submt=true, picked;
-  
-const body = '{"rest_api_key":"'+apkey+'", "page": 1}';
-  
+    
 function caricaPunteggi(callback) {
   var xobj = new XMLHttpRequest();
   xobj.overrideMimeType("application/json");
