@@ -1,5 +1,3 @@
-var apkey = "cGkYLSFmnlqik-WPpcU8kB";
-var quizurl ="https://quintadb.com/apps/cNW6foWQbbqyoWESoxrSkz/dtypes/entity/aqW58HfH1dOyoBW6DnlSkt.json";
 var quiztitle = "QuizToon!";
 var quizdesc = "Metti alla prova le tue conoscenze!";
 var quiz = [];
@@ -17,6 +15,7 @@ var perfectScore = 1000000;
 var scoreboard;
 var timePassed = 0;
 var myVar;
+var punteggi=[];
 /**
     * Set the information about your questions here. The correct answer string needs to match
     * the correct choice exactly, as it does string matching. (case sensitive)
@@ -146,21 +145,21 @@ var quizQuestions = [
 ];
 
 /******* No need to edit below this line *********/
-function loadall(){
+jQuery(document).ready(function($){
 var currentquestion = 0, score = 0, submt=true, picked;
   
 const body = '{"rest_api_key":"'+apkey+'", "page": 1}';
   
-function caricaPunteggi() {
-    var xhttp = new XMLHttpRequest();
-    xhttp.onreadystatechange = function() {
-         if (this.readyState == 4 && this.status == 200) {
-             debugger;
-         }
-    };
-    xhttp.open("GET", quizurl, true);
-    xhttp.setRequestHeader("Content-type", "application/json");
-    xhttp.send(body);
+function caricaPunteggi(callback) {
+  var xobj = new XMLHttpRequest();
+  xobj.overrideMimeType("application/json");
+  xobj.open('GET', 'score.json', true);
+  xobj.onreadystatechange = function () {
+  if (xobj.readyState == 4 && xobj.status == "200") {    
+    callback(xobj.responseText);
+  }
+};
+xobj.send(null);  
 }
   /**
          * This will add the individual choices for each question to the ul#choice-block
@@ -456,6 +455,7 @@ xhr.send(data);
     }
   }
   splashPage();
-  caricaPunteggi();
-};
-window.onload = loadall;
+  caricaPunteggi(function(response) {
+      punteggi = JSON.parse(response);
+   });
+});
