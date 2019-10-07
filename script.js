@@ -206,9 +206,9 @@ jQuery(document).ready(function($){
     $(document.createElement('button')).text("Inizia").attr('id', 'buttonStart').click(function(){startQuiz()}).appendTo('#splashdiv');
   }
 
-  function createScoreBoard(){    
+  function createScoreBoard(){
     var isHighscore = false;
-    for(var i = 0; i < scoreboard.length; i++ ){{
+    for(var i = 0; i < scoreboard.length; i++ ){
       //controlla che sia entrato nella leaderboard
       if(totalScore > scoreboard[i].points){
         isHighscore = true;
@@ -245,8 +245,7 @@ jQuery(document).ready(function($){
       $(document.createElement('div')).attr('id', 'thirdCell'+[i]).appendTo('#leadRow'+[i]);
       $(document.createElement('p')).text(scoreboard[i].time).appendTo('#thirdCell' +[i]);
       
-    }    
-    
+    }
   }
   
   function addSelfToLeaderboard(){
