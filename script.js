@@ -13,6 +13,7 @@ var previousCorrect = false;
 var possScore = 0;
 var perfectScore = 1000000;
 var scoreboard;
+var scoreboardmaxlength = 10;
 var timePassed = 0;
 var myVar;
 var scoreurl = "https://api.myjson.com/bins/1c00gj";
@@ -266,6 +267,9 @@ jQuery(document).ready(function($){
     var name = prompt("Inserisci il tuo nome!");
     if (name == null) {
       name = "Giocatore Anonimo";
+    }
+    if(scoreboard.length >= scoreboardmaxlength){
+      scoreboard.pop();
     }
     scoreboard.push({name: name, points: Math.round(totalScore), time: timePassed});
   }  
