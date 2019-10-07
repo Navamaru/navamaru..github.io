@@ -254,7 +254,7 @@ jQuery(document).ready(function($){
     if (name == null) {
       name = "Giocatore Anonimo";
     }
-    scoreboard.push({name: name, points: totalScore, time: timePassed});
+    scoreboard.push({name: name, points: Math.round(totalScore), time: timePassed});
   }  
   function startQuiz(){
     document.getElementById("splashdiv").style.display = "none";
