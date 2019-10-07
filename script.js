@@ -208,6 +208,15 @@ jQuery(document).ready(function($){
 
   function createScoreBoard(){    
     var isHighscore = false;
+    for(var i = 0; i < scoreboard.length; i++ ){{
+      //controlla che sia entrato nella leaderboard
+      if(totalScore > scoreboard[i].points){
+        isHighscore = true;
+      }
+    }
+    if(isHighscore){
+      addSelfToLeaderboard();
+    }
     scoreboard.sort(function(a, b) {
       return parseFloat(b.points) - parseFloat(a.points);
     });
@@ -235,15 +244,9 @@ jQuery(document).ready(function($){
       $(document.createElement('p')).text(scoreboard[i].points).appendTo('#secondCell' +[i]);
       $(document.createElement('div')).attr('id', 'thirdCell'+[i]).appendTo('#leadRow'+[i]);
       $(document.createElement('p')).text(scoreboard[i].time).appendTo('#thirdCell' +[i]);
-
-      //controlla che sia entrato nella leaderboard
-      if(totalScore > scoreboard[i].points){
-        isHighscore = true;
-      }
+      
     }    
-    if(isHighscore){
-      addSelfToLeaderboard();
-    }
+    
   }
   
   function addSelfToLeaderboard(){
@@ -252,39 +255,8 @@ jQuery(document).ready(function($){
     if (name == null) {
       name = "Giocatore Anonimo";
     }
-
-    var req = new XMLHttpRequest();
-
-    req.onreadystatechange = function () {
-      if (req.readyState == XMLHttpRequest.DONE) {
-        console.log(req.responseText);
-      }
-    };
-    var jsonToSend = JSON.stringify('{"name":"'+name+'", "points":'+totalScore+',"time":'+timePassed+'}');
-    postRequest("https://raw.githubusercontent.com/Navamaru/QuizToonScoreboard/master/score.json", jsonToSend);
-    /*
-    
-    req.open("PUT", "https://raw.githubusercontent.com/Navamaru/QuizToonScoreboard/master/score.json", true);
-    req.setRequestHeader("Content-type", "application/json");
-    //req.setRequestHeader("secret-key", "$2a$10$rn.15PCE6YuVgI3prmmkLOqyN.DGx5XizZaGCww.ticWa5QDE4/Iy");
-    req.send('{"name":"'+name+'", "points":'+totalScore+',"time":'+timePassed+'}');
-    */
-
-  }
-  function postRequest(url, data) {
-    var xhr = new XMLHttpRequest();
-xhr.open("PUT", url+'/12', true);
-xhr.setRequestHeader('Content-type','application/json; charset=utf-8');
-xhr.onload = function () {
-	var users = JSON.parse(xhr.responseText);
-	if (xhr.readyState == 4 && xhr.status == "200") {
-		console.table(users);
-	} else {
-		console.error(users);
-	}
-}
-xhr.send(data);
-}
+    scoreboard.push({name: name, points: totalScore, time: timePassed});
+  }  
   function startQuiz(){
     document.getElementById("splashdiv").style.display = "none";
     init();
