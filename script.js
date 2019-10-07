@@ -458,3 +458,4 @@ xhr.send(data);
   splashPage();
   caricaPunteggi();
 };
+window.onload = loadall;
