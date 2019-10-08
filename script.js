@@ -210,6 +210,7 @@ jQuery(document).ready(function($){
 
   function createScoreBoard(){
     var isHighscore = false;
+    totalScore = Math.round(totalScore);
     for(var i = 0; i < scoreboard.length; i++ ){
       //controlla che sia entrato nella leaderboard
       if(totalScore > scoreboard[i].points){
