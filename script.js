@@ -261,7 +261,7 @@ jQuery(document).ready(function($){
     var xhr = new XMLHttpRequest();
     xhr.open("PUT", scoreurl, true);
     xhr.setRequestHeader("Content-Type", "application/json");
-	xobj.setRequestHeader("secret-key", secretKey);
+	xhr.setRequestHeader("secret-key", secretKey);
     xhr.onreadystatechange = function () {
     };
     var data = JSON.stringify(scoreboard);
