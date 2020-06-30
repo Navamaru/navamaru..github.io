@@ -33,8 +33,7 @@ jQuery(document).ready(function($){
     var xobj = new XMLHttpRequest();
 	xobj.open('GET', scoreurl, true);
     xobj.overrideMimeType("application/json");
-	xobj.setRequestHeader("secret-key", secretKey);
-    
+	xobj.setRequestHeader("secret-key", secretKey);    
     xobj.onreadystatechange = function () {
       if (xobj.readyState == 4 && xobj.status == "200") {    
         callback(xobj.responseText);
@@ -262,6 +261,7 @@ jQuery(document).ready(function($){
     var xhr = new XMLHttpRequest();
     xhr.open("PUT", scoreurl, true);
     xhr.setRequestHeader("Content-Type", "application/json");
+	xobj.setRequestHeader("secret-key", secretKey);
     xhr.onreadystatechange = function () {
     };
     var data = JSON.stringify(scoreboard);
