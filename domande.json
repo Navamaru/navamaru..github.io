@@ -1,6 +1,6 @@
 [{
     "question"      :   "Lady Oscar, Lady Oscar nell'azzurro dei tuoi occhi c'è l'arcobaleno..",
-    "image"         :   "https://www.corriere.it/methode_image/2019/10/10/Spettacoli/Foto%20Spettacoli%20-%20Trattate/oscara-kw0E-U31401821257802nwB-656x492@Corriere-Web-Sezioni.png",
+    "image"         :   "https://www.prettygeneration.it/wp-content/uploads/2017/08/Sai-completare-le-sigle-dei-cartoni-di-CRISTINA-DAVENA-QUIZ-2.jpg",
     "choices"       :   [
       "Lady Oscar, Lady Oscar, chi lo sa se un giorno poi tu l'attraverserai.",
       "Lady Oscar, Lady Oscar, tu combatti con destrezza ed agilità.",
@@ -23,7 +23,7 @@
   },
   {
     "question"      :   "Sailor Moon, corri per noi, scintillante Sailor Moon..",
-    "image"         :   "https://www.japaniac.de/wp-content/uploads/2018/08/Sailor-Moon.jpg",
+    "image"         :   "https://www.prettygeneration.it/wp-content/uploads/2017/08/Sai-completare-le-sigle-dei-cartoni-di-CRISTINA-DAVENA-QUIZ-3.jpg",
     "choices"       :   [
       "Sailor Moon, vai dove vuoi, sfavillante Sailor Moon.",
       "Sailor Moon, vola con noi, favolosa Sailor Moon.",
@@ -95,7 +95,7 @@
   },
   {
     "question"      :   "perchè non c'è.. un drago che..",
-    "image"         :   "https://www.japaniac.de/wp-content/uploads/2018/08/un-nouveau-film-d-animation-dragon-ball-prevu.jpg",
+    "image"         :   "https://www.socialup.it/wp-content/uploads/2015/09/dragon-ball-1200x674.jpg",
     "choices"       :   [
       "sia forte come te!",
       "sia grande come te!",
@@ -107,7 +107,7 @@
   },
   {
     "question"      :   "Vinci la tua battaglia e vai..",
-    "image"         :   "https://www.vorname.com/images/themen/Pokemon-Namen.jpg",
+    "image"         :   "https://i0.wp.com/www.nerdslant.com/wp-content/uploads/2016/06/Ash_and_Friends-e1464840500325.jpg",
     "choices"       :   [
       "corri e non ti stancare mai.",
       "gli incontri non finiranno mai.",
@@ -115,6 +115,90 @@
       "a comprare del latte."
     ],
     "correct"       :   "solo tu sai come farai.",
+    "explanation"   :   ""
+  },
+  {
+    "question"      :   "Se un leoncino coccolone un giorno, sai, a una fiera incontrerai mentre un ....... molto strano proverai",
+    "image"         :   "",
+    "choices"       :   [
+      "Aeroplano",
+      "Dirigibile",
+      "Motorino",
+      "Treno"
+    ],
+    "correct"       :   "Aeroplano",
+    "explanation"   :   ""
+  },
+  {
+    "question"      :   "Qui nella nostra classe abbiamo un gruppo di ragazzi che trattan gli .... come fossero pupazzi",
+    "image"         :   "https://www.daninseries.it/wp-content/uploads/2018/04/rossana-heric.jpg",
+    "choices"       :   [
+      "studenti",
+      "insegnanti",
+      "inservienti",
+      "adulti"
+    ],
+    "correct"       :   "insegnanti",
+    "explanation"   :   ""
+  },
+  {
+    "question"      :   "Ho uno strano ........ che mi calza a pennello, dicon tutti che sono buffa, birichina, molto buffa",
+    "image"         :   "https://upload.wikimedia.org/wikipedia/it/thumb/6/68/Memole_dolce_Memole.jpg/220px-Memole_dolce_Memole.jpg",
+    "choices"       :   [
+      "mantello",
+      "cappello",
+      "borsello",
+      "maglioncello"
+    ],
+    "correct"       :   "cappello",
+    "explanation"   :   ""
+  },
+  {
+    "question"      :   "Guarda il lampo che è laggiù, attraversa il cielo blu...",
+    "image"         :   "",
+    "choices"       :   [
+      "Lady Oscar!",
+      "Sailor Moon!",
+      "Dragonball!",
+      "Naruto!"
+    ],
+    "correct"       :   "Lady Oscar!",
+    "explanation"   :   ""
+  },
+  {
+    "question"      :   "Siamo proprio fatti così questo nostro corpo è meglio di ...... vedrai",
+    "image"         :   "https://wp-ir.s3.amazonaws.com/uploads/2019/02/30-anni-di-siamo-fatti-cosi-1.jpg",
+    "choices"       :   [
+      "Una macchina",
+      "Un capolavoro",
+      "Un computer",
+      "Un robot"
+    ],
+    "correct"       :   "Un computer",
+    "explanation"   :   ""
+  },
+  {
+    "question"      :   "Hanno la forza .....",
+    "image"         :   "https://www.barfuss.it/files/public/styles/node_article_main_image/public/field_main_image/article/hb.jpg?itok=pzKZZ9iK",
+    "choices"       :   [
+      "dell'età",
+      "della bravura",
+      "della capacità",
+      "dell'umiltà"
+    ],
+    "correct"       :   "dell'umiltà",
+    "explanation"   :   ""
+  },
+  {
+    "question"      :   "Si trasforma in un razzo missile con circuiti di mille valvole. Chi è?",
+    "image"         :   "https://images-na.ssl-images-amazon.com/images/I/818j0IWMz1L._AC_SL1500_.jpg",
+    "choices"       :   [
+      "Ufo Robot Goldrake",
+      "Jeeg Robot d'Acciaio",
+      "Mazinga Z",
+      "Daltanious"
+    ],
+    "correct"       :   "Ufo Robot Goldrake",
     "explanation"   :   ""
   }
 ]
