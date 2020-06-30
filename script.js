@@ -32,6 +32,7 @@ jQuery(document).ready(function($){
   function caricaPunteggi(callback) {
     var xobj = new XMLHttpRequest();
     xobj.overrideMimeType("application/json");
+	xobj.setRequestHeader("secret-key", secretKey);
     xobj.open('GET', scoreurl, true);
     xobj.onreadystatechange = function () {
       if (xobj.readyState == 4 && xobj.status == "200") {    
