@@ -1,1 +1,341 @@
-var _0x88ba=['#submitbutton','display','Hai\x20risposto\x20correttamente\x20a\x20','\x20domande\x20su\x20','center','2em','\x20punti','insertAfter','splashdiv','#frame','textlogosplash','#splashdiv','imageLogo','http://www.lineadiretta24.it/wp-content/uploads/2017/04/robot-anni-70-e-80-860x450_c.jpg','descQuiz','button','Inizia','buttonStart','points','sort','leaderboard','Leader\x20Board','leadbTitle','#leaderboard','descRow','leadRow','firstCelldesc','#descRow','Punteggio','#secondCelldesc','thirdCelldesc','#thirdCelldesc','oddRows','firstCell','#leadRow','name','#firstCell','secondCell','#secondCell','thirdCell','continua','Ricomincia','reload','#continua','setRequestHeader','Content-Type','stringify','greetings','Complimenti!\x20Sei\x20entrato\x20nella\x20Leaderboard!','Inserisci\x20il\x20tuo\x20nome!','Giocatore\x20Anonimo','push','includes','quizContainer','string','#quizContainer','Quiz','array','pager','Domanda\x201\x20di\x20','#infoBar','bar','&nbsp;','choice-block','choice-box','submitbutton','Conferma','#222','offsetWidth','parse','QuizToon!','Metti\x20alla\x20prova\x20le\x20tue\x20conoscenze!','ready','overrideMimeType','application/json','open','GET','onreadystatechange','status','200','responseText','send','domande.json','readyState','undefined','type','#choice-block','empty','createElement','choice\x20choice-box','attr','data-index','text','appendTo','width','find','div','animate','html','floor','#explanation','question','#pager','length','hasOwnProperty','image','img','addClass','question-image','src','#question-image','remove','#progressBar','choices','correct','.choice','click','style','off','mouseout\x20mouseover','css','#2274e5','white','getElementById','progressBar','secBar','0123456789ABCDEF','random','backgroundColor','round','#question'];(function(_0x265a56,_0x2d9e4c){var _0x41e547=function(_0x5b714f){while(--_0x5b714f){_0x265a56['push'](_0x265a56['shift']());}};_0x41e547(++_0x2d9e4c);}(_0x88ba,0x1cf));var _0x205e=function(_0x3861e3,_0x2b8628){_0x3861e3=_0x3861e3-0x0;var _0x3d6507=_0x88ba[_0x3861e3];return _0x3d6507;};var quiztitle=_0x205e('0x0');var quizdesc=_0x205e('0x1');var quiz=[];var questionsSelected=[];var numberOfQuestionsPerQuiz=0x4;var progressIndicator=0x64;var totalScore=0x0;var secondsToAnswer=0xa;var barWidth;var theTimer;var chain=0x1;var previousCorrect=![];var possScore=0x0;var perfectScore=0xf4240;var scoreboard;var scoreboardmaxlength=0xa;var timePassed=0x0;var myVar;var scoreurl='https://api.myjson.com/bins/1c00gj';jQuery(document)[_0x205e('0x2')](function(_0x588b46){var _0x2ec15e=0x0,_0x476064=0x0,_0x2e6422=!![],_0xbbfdad;function _0x1d8819(_0x4f531d){var _0x210f15=new XMLHttpRequest();_0x210f15[_0x205e('0x3')](_0x205e('0x4'));_0x210f15[_0x205e('0x5')](_0x205e('0x6'),scoreurl,!![]);_0x210f15[_0x205e('0x7')]=function(){if(_0x210f15['readyState']==0x4&&_0x210f15[_0x205e('0x8')]==_0x205e('0x9')){_0x4f531d(_0x210f15[_0x205e('0xa')]);}};_0x210f15[_0x205e('0xb')](null);}function _0x32826f(_0x5266ed){var _0xc733cc=new XMLHttpRequest();_0xc733cc[_0x205e('0x3')]('application/json');_0xc733cc[_0x205e('0x5')](_0x205e('0x6'),_0x205e('0xc'),!![]);_0xc733cc[_0x205e('0x7')]=function(){if(_0xc733cc[_0x205e('0xd')]==0x4&&_0xc733cc[_0x205e('0x8')]==_0x205e('0x9')){_0x5266ed(_0xc733cc['responseText']);}};_0xc733cc[_0x205e('0xb')](null);}function _0x467194(_0x101dd0){if(typeof _0x101dd0!==_0x205e('0xe')&&_0x588b46[_0x205e('0xf')](_0x101dd0)=='array'){_0x588b46(_0x205e('0x10'))[_0x205e('0x11')]();for(var _0x1f3903=0x0;_0x1f3903<_0x101dd0['length'];_0x1f3903++){_0x588b46(document[_0x205e('0x12')]('li'))['addClass'](_0x205e('0x13'))[_0x205e('0x14')](_0x205e('0x15'),_0x1f3903)[_0x205e('0x16')](_0x101dd0[_0x1f3903])[_0x205e('0x17')](_0x205e('0x10'));}}}function _0x52d5ea(_0x25aad1,_0x43343f,_0x409fa1,_0x16f9e3){if(_0x16f9e3==!![]){clearTimeout(theTimer);}var _0x1fdd37=_0x25aad1*_0x409fa1[_0x205e('0x18')]()/_0x43343f;possScore=_0x43343f-_0x25aad1;_0x409fa1[_0x205e('0x19')](_0x205e('0x1a'))[_0x205e('0x1b')]({'width':_0x1fdd37},0x1f4)[_0x205e('0x1c')](Math[_0x205e('0x1d')](_0x25aad1/0x3c)+':'+_0x25aad1%0x3c);if(_0x25aad1>0x0){theTimer=setTimeout(function(){_0x52d5ea(_0x25aad1-0x1,_0x43343f,_0x409fa1,![]);},0x3e8);}};function _0x58b279(){_0x2e6422=!![];possScore=0x0;_0x588b46(_0x205e('0x1e'))['empty']();_0x588b46('#question')[_0x205e('0x16')](quiz[_0x2ec15e][_0x205e('0x1f')]);_0x588b46(_0x205e('0x20'))['text']('Domanda\x20'+Number(_0x2ec15e+0x1)+'\x20di\x20'+quiz[_0x205e('0x21')]);if(quiz[_0x2ec15e][_0x205e('0x22')](_0x205e('0x23'))&&quiz[_0x2ec15e][_0x205e('0x23')]!=''){if(_0x588b46('#question-image')[_0x205e('0x21')]==0x0){_0x588b46(document[_0x205e('0x12')](_0x205e('0x24')))[_0x205e('0x25')](_0x205e('0x26'))[_0x205e('0x14')]('id',_0x205e('0x26'))['attr'](_0x205e('0x27'),quiz[_0x2ec15e][_0x205e('0x23')])['insertAfter']('#question');}else{_0x588b46(_0x205e('0x28'))[_0x205e('0x14')](_0x205e('0x27'),quiz[_0x2ec15e][_0x205e('0x23')]);}}else{_0x588b46(_0x205e('0x28'))[_0x205e('0x29')]();}_0x52d5ea(secondsToAnswer,secondsToAnswer,_0x588b46(_0x205e('0x2a')),!![]);_0x467194(quiz[_0x2ec15e]['choices']);_0x4e3acf();}function _0x3e88cb(_0x38c53c){if(quiz[_0x2ec15e][_0x205e('0x2b')][_0x38c53c]==quiz[_0x2ec15e][_0x205e('0x2c')]){if(previousCorrect){chain++;}_0x476064++;_0x2ec15e++;previousCorrect=!![];if(_0x2ec15e==quiz[_0x205e('0x21')]){_0x403b1a(!![]);}else{_0x403b1a(![]);}}else{chain=0x1;_0x2ec15e++;previousCorrect=![];}if(_0x2ec15e==quiz['length']){if(_0x588b46(_0x205e('0x28'))[_0x205e('0x21')]!=0x0){_0x588b46(_0x205e('0x28'))[_0x205e('0x29')]();}_0x3175a4();}else{_0x58b279();}}function _0x4e3acf(){_0x588b46(_0x205e('0x2d'))['on'](_0x205e('0x2e'),function(){_0xbbfdad=_0x588b46(this)[_0x205e('0x14')]('data-index');_0x588b46(_0x205e('0x2d'))['removeAttr'](_0x205e('0x2f'))[_0x205e('0x30')](_0x205e('0x31'));_0x588b46(this)[_0x205e('0x32')]({'border-color':'#222','font-weight':0x2bc,'background-color':_0x205e('0x33'),'color':_0x205e('0x34')});if(_0x2e6422){_0x2e6422=![];_0x588b46('#submitbutton')[_0x205e('0x32')]({'color':'#000'})['on'](_0x205e('0x2e'),function(){_0x588b46(_0x205e('0x2d'))[_0x205e('0x30')](_0x205e('0x2e'));_0x588b46(this)[_0x205e('0x30')](_0x205e('0x2e'));_0x3e88cb(_0xbbfdad);});}});}function _0x25a02f(){var _0x37846a=document[_0x205e('0x35')](_0x205e('0x36'));var _0x381a9b=document['getElementById'](_0x205e('0x37'));var _0x56926f=_0x205e('0x38');var _0x4300ea='#';for(var _0x5d1d22=0x0;_0x5d1d22<0x6;_0x5d1d22++){_0x4300ea+=_0x56926f[Math[_0x205e('0x1d')](Math[_0x205e('0x39')]()*0x10)];}var _0x2731ff='#';for(var _0x5d1d22=0x0;_0x5d1d22<0x6;_0x5d1d22++){_0x2731ff+=_0x56926f[Math[_0x205e('0x1d')](Math[_0x205e('0x39')]()*0x10)];}_0x37846a[_0x205e('0x2f')]['backgroundColor']=_0x4300ea;_0x381a9b[_0x205e('0x2f')][_0x205e('0x3a')]=_0x2731ff;}function _0x3175a4(){clearInterval(myVar);totalScore=Math[_0x205e('0x3b')](totalScore);_0x588b46('#explanation')['empty']();_0x588b46(_0x205e('0x3c'))[_0x205e('0x11')]();_0x588b46(_0x205e('0x10'))[_0x205e('0x11')]();_0x588b46(_0x205e('0x3d'))[_0x205e('0x29')]();document['getElementById'](_0x205e('0x36'))['style'][_0x205e('0x3e')]='none';document[_0x205e('0x35')](_0x205e('0x37'))[_0x205e('0x2f')]['display']='none';_0x588b46(_0x205e('0x3c'))[_0x205e('0x16')](_0x205e('0x3f')+_0x476064+_0x205e('0x40')+quiz[_0x205e('0x21')]+'.');_0x588b46(document[_0x205e('0x12')]('h2'))[_0x205e('0x32')]({'text-align':_0x205e('0x41'),'font-size':_0x205e('0x42')})[_0x205e('0x16')]('Hai\x20totalizzato\x20'+totalScore+_0x205e('0x43'))[_0x205e('0x44')](_0x205e('0x3c'));_0x14b7cc();}function _0x403b1a(_0x197991){var _0x507782=theTimer/_0x2ec15e;var _0x10ea4e=0x2710/(_0x507782-possScore);totalScore+=_0x10ea4e;if(_0x197991){totalScore=Math[_0x205e('0x3b')](totalScore+perfectScore/theTimer*_0x476064);}}function _0x1e51b3(){_0x588b46(document[_0x205e('0x12')](_0x205e('0x1a')))[_0x205e('0x14')]('id',_0x205e('0x45'))['appendTo'](_0x205e('0x46'));_0x588b46(document[_0x205e('0x12')]('h1'))[_0x205e('0x16')](quiztitle)[_0x205e('0x14')]('id',_0x205e('0x47'))[_0x205e('0x17')](_0x205e('0x48'));_0x588b46(document[_0x205e('0x12')]('img'))[_0x205e('0x14')]('id',_0x205e('0x49'))['attr'](_0x205e('0x27'),_0x205e('0x4a'))[_0x205e('0x17')](_0x205e('0x48'));_0x588b46(document[_0x205e('0x12')]('h3'))[_0x205e('0x16')](quizdesc)[_0x205e('0x14')]('id',_0x205e('0x4b'))[_0x205e('0x17')](_0x205e('0x48'));_0x588b46(document[_0x205e('0x12')](_0x205e('0x4c')))[_0x205e('0x16')](_0x205e('0x4d'))[_0x205e('0x14')]('id',_0x205e('0x4e'))[_0x205e('0x2e')](function(){_0x54110d();})[_0x205e('0x17')](_0x205e('0x48'));}function _0x14b7cc(){var _0x15e624=![];for(var _0x1280f2=0x0;_0x1280f2<scoreboard[_0x205e('0x21')];_0x1280f2++){if(totalScore>scoreboard[_0x1280f2][_0x205e('0x4f')]){_0x15e624=!![];}}if(_0x15e624){_0x279676();}scoreboard[_0x205e('0x50')](function(_0x5c205a,_0x2a2d32){return parseFloat(_0x2a2d32['points'])-parseFloat(_0x5c205a['points']);});if(_0x15e624){_0x3527ad();}_0x588b46(document[_0x205e('0x12')](_0x205e('0x1a')))[_0x205e('0x14')]('id',_0x205e('0x51'))[_0x205e('0x17')](_0x205e('0x46'));_0x588b46(document[_0x205e('0x12')]('h1'))[_0x205e('0x16')](_0x205e('0x52'))['attr']('id',_0x205e('0x53'))[_0x205e('0x17')](_0x205e('0x54'));_0x588b46(document[_0x205e('0x12')](_0x205e('0x1a')))['attr']('id',_0x205e('0x55'))[_0x205e('0x25')](_0x205e('0x56'))[_0x205e('0x17')](_0x205e('0x54'));_0x588b46(document[_0x205e('0x12')]('div'))[_0x205e('0x14')]('id',_0x205e('0x57'))[_0x205e('0x17')](_0x205e('0x58'));_0x588b46(document[_0x205e('0x12')]('p'))[_0x205e('0x16')]('Nome')[_0x205e('0x17')]('#firstCelldesc');_0x588b46(document[_0x205e('0x12')](_0x205e('0x1a')))[_0x205e('0x14')]('id','secondCelldesc')[_0x205e('0x17')](_0x205e('0x58'));_0x588b46(document[_0x205e('0x12')]('p'))[_0x205e('0x16')](_0x205e('0x59'))[_0x205e('0x17')](_0x205e('0x5a'));_0x588b46(document[_0x205e('0x12')](_0x205e('0x1a')))[_0x205e('0x14')]('id',_0x205e('0x5b'))[_0x205e('0x17')]('#descRow');_0x588b46(document[_0x205e('0x12')]('p'))['text']('Tempo')[_0x205e('0x17')](_0x205e('0x5c'));for(var _0x1280f2=0x0;_0x1280f2<scoreboard['length'];_0x1280f2++){if(_0x1280f2%0x2==0x0){_0x588b46(document[_0x205e('0x12')](_0x205e('0x1a')))['attr']('id',_0x205e('0x56')+[_0x1280f2])[_0x205e('0x25')](_0x205e('0x56'))['appendTo']('#leaderboard');}else{_0x588b46(document['createElement'](_0x205e('0x1a')))['attr']('id',_0x205e('0x56')+[_0x1280f2])[_0x205e('0x25')](_0x205e('0x5d'))['addClass'](_0x205e('0x56'))[_0x205e('0x17')](_0x205e('0x54'));}_0x588b46(document[_0x205e('0x12')]('div'))[_0x205e('0x14')]('id',_0x205e('0x5e')+[_0x1280f2])[_0x205e('0x17')](_0x205e('0x5f')+[_0x1280f2]);_0x588b46(document[_0x205e('0x12')]('p'))[_0x205e('0x16')](scoreboard[_0x1280f2][_0x205e('0x60')])['appendTo'](_0x205e('0x61')+[_0x1280f2]);_0x588b46(document['createElement'](_0x205e('0x1a')))[_0x205e('0x14')]('id',_0x205e('0x62')+[_0x1280f2])[_0x205e('0x17')](_0x205e('0x5f')+[_0x1280f2]);_0x588b46(document['createElement']('p'))[_0x205e('0x16')](scoreboard[_0x1280f2][_0x205e('0x4f')])[_0x205e('0x17')](_0x205e('0x63')+[_0x1280f2]);_0x588b46(document[_0x205e('0x12')](_0x205e('0x1a')))[_0x205e('0x14')]('id',_0x205e('0x64')+[_0x1280f2])[_0x205e('0x17')](_0x205e('0x5f')+[_0x1280f2]);_0x588b46(document[_0x205e('0x12')]('p'))[_0x205e('0x16')](scoreboard[_0x1280f2]['time'])[_0x205e('0x17')]('#thirdCell'+[_0x1280f2]);}_0x588b46(document[_0x205e('0x12')](_0x205e('0x1a')))[_0x205e('0x14')]('id',_0x205e('0x65'))['appendTo'](_0x205e('0x46'));_0x588b46(document[_0x205e('0x12')]('button'))[_0x205e('0x16')](_0x205e('0x66'))[_0x205e('0x14')]('id',_0x205e('0x4e'))[_0x205e('0x2e')](function(){location[_0x205e('0x67')]();})['appendTo'](_0x205e('0x68'));}function _0x3527ad(){var _0x32dcb4=new XMLHttpRequest();_0x32dcb4['open']('PUT',scoreurl,!![]);_0x32dcb4[_0x205e('0x69')](_0x205e('0x6a'),_0x205e('0x4'));_0x32dcb4[_0x205e('0x7')]=function(){};var _0x5db5d1=JSON[_0x205e('0x6b')](scoreboard);_0x32dcb4[_0x205e('0xb')](_0x5db5d1);}function _0x279676(){_0x588b46(document[_0x205e('0x12')]('h2'))[_0x205e('0x14')]('id',_0x205e('0x6c'))[_0x205e('0x16')](_0x205e('0x6d'))['insertAfter'](_0x205e('0x3c'));var _0x2f92ad=prompt(_0x205e('0x6e'));if(_0x2f92ad==null){_0x2f92ad=_0x205e('0x6f');}if(scoreboard[_0x205e('0x21')]>=scoreboardmaxlength){scoreboard['pop']();}scoreboard[_0x205e('0x70')]({'name':_0x2f92ad,'points':Math[_0x205e('0x3b')](totalScore),'time':timePassed});}function _0x54110d(){document[_0x205e('0x35')]('splashdiv')[_0x205e('0x2f')][_0x205e('0x3e')]='none';_0x586f31();}function _0x586f31(){myVar=setInterval(function(){timePassed++;},0x3e8);for(var _0x38e2bf=0x0;_0x38e2bf<numberOfQuestionsPerQuiz;_0x38e2bf++){var _0x1e55a8=Math[_0x205e('0x1d')](Math['random']()*quizQuestions[_0x205e('0x21')]);if(!questionsSelected[_0x205e('0x71')](_0x1e55a8)){questionsSelected[_0x205e('0x70')](_0x1e55a8);quiz[_0x205e('0x70')](quizQuestions[_0x1e55a8]);}else{_0x38e2bf--;}}_0x588b46(document[_0x205e('0x12')](_0x205e('0x1a')))['attr']('id',_0x205e('0x72'))[_0x205e('0x17')](_0x205e('0x46'));if(typeof quiztitle!=='undefined'&&_0x588b46[_0x205e('0xf')](quiztitle)===_0x205e('0x73')){_0x588b46(document[_0x205e('0x12')]('h1'))[_0x205e('0x16')](quiztitle)[_0x205e('0x17')](_0x205e('0x74'));}else{_0x588b46(document[_0x205e('0x12')]('h1'))['text'](_0x205e('0x75'))[_0x205e('0x17')]('#quizContainer');}if(typeof quiz!==_0x205e('0xe')&&_0x588b46['type'](quiz)===_0x205e('0x76')){_0x588b46(document[_0x205e('0x12')](_0x205e('0x1a')))[_0x205e('0x25')]('bar')['attr']('id','infoBar')['appendTo'](_0x205e('0x74'));_0x588b46(document[_0x205e('0x12')]('p'))[_0x205e('0x25')](_0x205e('0x77'))['attr']('id',_0x205e('0x77'))[_0x205e('0x16')](_0x205e('0x78')+quiz[_0x205e('0x21')])[_0x205e('0x17')]('#infoBar');_0x588b46(document[_0x205e('0x12')](_0x205e('0x1a')))[_0x205e('0x14')]('id',_0x205e('0x36'))[_0x205e('0x17')](_0x205e('0x79'));_0x588b46(document[_0x205e('0x12')](_0x205e('0x1a')))['addClass'](_0x205e('0x7a'))[_0x205e('0x14')]('id',_0x205e('0x37'))['appendTo'](_0x205e('0x2a'));_0x588b46(document[_0x205e('0x12')]('h2'))[_0x205e('0x25')](_0x205e('0x1f'))[_0x205e('0x14')]('id',_0x205e('0x1f'))[_0x205e('0x16')](quiz[0x0][_0x205e('0x1f')])[_0x205e('0x17')]('#quizContainer');if(quiz[0x0]['hasOwnProperty'](_0x205e('0x23'))&&quiz[0x0][_0x205e('0x23')]!=''){_0x588b46(document[_0x205e('0x12')](_0x205e('0x24')))[_0x205e('0x25')](_0x205e('0x26'))[_0x205e('0x14')]('id','question-image')['attr'](_0x205e('0x27'),quiz[0x0]['image'])[_0x205e('0x17')](_0x205e('0x74'));}_0x588b46(document['createElement']('p'))[_0x205e('0x25')]('explanation')[_0x205e('0x14')]('id','explanation')[_0x205e('0x1c')](_0x205e('0x7b'))[_0x205e('0x17')](_0x205e('0x74'));_0x588b46(document[_0x205e('0x12')]('ul'))[_0x205e('0x14')]('id',_0x205e('0x7c'))['appendTo'](_0x205e('0x74'));_0x467194(quiz[0x0][_0x205e('0x2b')]);_0x588b46(document[_0x205e('0x12')](_0x205e('0x1a')))['addClass'](_0x205e('0x7d'))[_0x205e('0x14')]('id',_0x205e('0x7e'))[_0x205e('0x16')](_0x205e('0x7f'))[_0x205e('0x32')]({'font-weight':0x2bc,'color':_0x205e('0x80')})['appendTo'](_0x205e('0x74'));barWidth=document[_0x205e('0x35')]('progressBar')[_0x205e('0x81')];_0x4e3acf();_0x52d5ea(secondsToAnswer,secondsToAnswer,_0x588b46(_0x205e('0x2a')),!![]);_0x25a02f();}}_0x1e51b3();_0x1d8819(function(_0x329f81){scoreboard=JSON[_0x205e('0x82')](_0x329f81);});_0x32826f(function(_0x41978b){quizQuestions=JSON[_0x205e('0x82')](_0x41978b);});});
+var quiztitle = "QuizToon!";
+var quizdesc = "Metti alla prova le tue conoscenze!";
+var quiz = [];
+var questionsSelected = [];
+var numberOfQuestionsPerQuiz = 4;
+var progressIndicator = 100;
+var totalScore = 0;
+var secondsToAnswer = 10;
+var barWidth;
+var theTimer;
+var chain = 1;
+var previousCorrect = false;
+var possScore = 0;
+var perfectScore = 1000000;
+var scoreboard;
+var scoreboardmaxlength = 10;
+var timePassed = 0;
+var myVar;
+var scoreurl2 = "https://api.myjson.com/bins/1c00gj";
+var secretKey = "$2b$10$y4oW8P5lGrUgasRPMn8GEec/NCtZP42ujmObR1mGLEb8FbirCkPbO";
+var scoreurl = "https://api.jsonbin.io/b/5efb35f67f16b71d48a89beb";
+/**
+    * Set the information about your questions here. The correct answer string needs to match
+    * the correct choice exactly, as it does string matching. (case sensitive)
+    *
+    */
+
+/******* No need to edit below this line *********/
+jQuery(document).ready(function($){
+  var currentquestion = 0, score = 0, submt=true, picked;
+      
+  function caricaPunteggi(callback) {
+    var xobj = new XMLHttpRequest();
+    xobj.overrideMimeType("application/json");
+    xobj.open('GET', scoreurl, true);
+    xobj.onreadystatechange = function () {
+      if (xobj.readyState == 4 && xobj.status == "200") {    
+        callback(xobj.responseText);
+      }
+    };
+    xobj.send(null);  
+  }
+  function caricaDomande(callback) {
+    var xobj = new XMLHttpRequest();
+    xobj.overrideMimeType("application/json");
+    xobj.open('GET', 'domande.json', true);
+    xobj.onreadystatechange = function () {
+      if (xobj.readyState == 4 && xobj.status == "200") {    
+        callback(xobj.responseText);
+      }
+    };
+    xobj.send(null);  
+  }
+  /**
+         * This will add the individual choices for each question to the ul#choice-block
+         *
+         * @param {choices} array The choices from each question
+         */
+  function addChoices(choices){
+    if(typeof choices !== "undefined" && $.type(choices) == "array"){
+      $('#choice-block').empty();
+      for(var i=0;i<choices.length; i++){
+        $(document.createElement('li')).addClass('choice choice-box').attr('data-index', i).text(choices[i]).appendTo('#choice-block');                    
+      }
+    }
+  }
+  ///////////////////////////
+  function progress(timeleft, timetotal, $element, newQuestion) {
+    if(newQuestion == true){             
+      clearTimeout(theTimer);      
+    }    
+    var progressBarWidth = timeleft * $element.width() / timetotal;
+    possScore = timetotal - timeleft;
+    $element.find('div').animate({ width: progressBarWidth }, 500).html(Math.floor(timeleft/60) + ":"+ timeleft%60);
+    if(timeleft > 0) {
+      theTimer = setTimeout(function() {
+        progress(timeleft - 1, timetotal, $element, false);
+      }, 1000);
+    }
+  };
+  //////////////////////
+  /**
+         * Resets all of the fields to prepare for next question
+         */
+  function nextQuestion(){
+    submt = true;
+    possScore = 0;
+    $('#explanation').empty();
+    $('#question').text(quiz[currentquestion]['question']);
+    $('#pager').text('Domanda ' + Number(currentquestion + 1) + ' di ' + quiz.length);
+    if(quiz[currentquestion].hasOwnProperty('image') && quiz[currentquestion]['image'] != ""){
+      if($('#question-image').length == 0){
+        $(document.createElement('img')).addClass('question-image').attr('id', 'question-image').attr('src', quiz[currentquestion]['image']).insertAfter('#question');
+      } else {
+        $('#question-image').attr('src', quiz[currentquestion]['image']);
+      }
+    } else {
+      $('#question-image').remove();      
+    }
+    progress(secondsToAnswer,secondsToAnswer, $('#progressBar'), true);
+    addChoices(quiz[currentquestion]['choices']);
+    setupButtons();
+  }
+
+  /**
+         * After a selection is submitted, checks if its the right answer
+         *
+         * @param {choice} number The li zero-based index of the choice picked
+         */
+  function processQuestion(choice){
+    if(quiz[currentquestion]['choices'][choice] == quiz[currentquestion]['correct']){
+      if (previousCorrect){
+        chain++;
+      }
+      score++;
+      currentquestion++;      
+      previousCorrect = true;
+      if(currentquestion == quiz.length){
+        calculatePoints(true);
+      }
+      else{
+        calculatePoints(false);
+      }
+    } else {      
+      chain = 1;
+      currentquestion++;
+      previousCorrect = false;
+    }    
+    if(currentquestion == quiz.length){
+      if($('#question-image').length != 0){
+        $('#question-image').remove();
+      }
+      endQuiz();
+    } else {      
+      nextQuestion();
+    }    
+  }
+
+  /**
+         * Sets up the event listeners for each button.
+         */
+  function setupButtons(){    
+    $('.choice').on('click', function(){
+      picked = $(this).attr('data-index');
+      $('.choice').removeAttr('style').off('mouseout mouseover');
+      $(this).css({'border-color':'#222','font-weight':700,'background-color':'#2274e5', 'color':'white'});
+      if(submt){
+        submt=false;
+        $('#submitbutton').css({'color':'#000'}).on('click', function(){
+          $('.choice').off('click');
+          $(this).off('click');
+          processQuestion(picked);
+        });
+      }
+    })
+  }
+
+  //Randomize bar colors
+  function RandomizeBarColors(){
+    var bar1 = document.getElementById('progressBar');
+    var bar2 = document.getElementById('secBar');
+    var letters = '0123456789ABCDEF';
+    var color = '#';
+    for (var i = 0; i < 6; i++) {
+      color += letters[Math.floor(Math.random() * 16)];
+    }        
+    var color2 = '#';
+    for (var i = 0; i < 6; i++) {
+      color2 += letters[Math.floor(Math.random() * 16)];
+    }
+    bar1.style.backgroundColor = color;
+    bar2.style.backgroundColor = color2;
+  }
+
+
+  /**
+         * Quiz ends, display a message.
+         */
+  function endQuiz(){
+    clearInterval(myVar);
+    $('#explanation').empty();
+    $('#question').empty();
+    $('#choice-block').empty();
+    $('#submitbutton').remove();
+    document.getElementById("progressBar").style.display = "none";
+    document.getElementById("secBar").style.display = "none";
+    $('#question').text("Hai risposto correttamente a " + score + " domande su " + quiz.length + ".");
+    $(document.createElement('h2')).css({'text-align':'center', 'font-size':'2em'}).text('Hai totalizzato ' + totalScore + ' punti').insertAfter('#question');
+    createScoreBoard();
+  }
+
+  //////////////////////////////
+  function calculatePoints(theEnd){
+    var curTimer = theTimer / currentquestion;
+    var partScore = 10000 / (curTimer - possScore);
+    totalScore += partScore;
+    if(theEnd){
+      totalScore = Math.round(totalScore + (perfectScore / theTimer) * score);
+    }
+  }
+
+  /**
+         * Runs the first time and creates all of the elements for the quiz
+         */
+  function splashPage(){
+    $(document.createElement('div')).attr('id', 'splashdiv').appendTo('#frame');
+    $(document.createElement('h1')).text(quiztitle).attr('id', 'textlogosplash').appendTo('#splashdiv');
+    $(document.createElement('img')).attr('id', 'imageLogo').attr('src','http://www.lineadiretta24.it/wp-content/uploads/2017/04/robot-anni-70-e-80-860x450_c.jpg').appendTo('#splashdiv');
+    $(document.createElement('h3')).text(quizdesc).attr('id', 'descQuiz').appendTo('#splashdiv');
+    $(document.createElement('button')).text("Inizia").attr('id', 'buttonStart').click(function(){startQuiz()}).appendTo('#splashdiv');
+  }
+
+  function createScoreBoard(){
+    var isHighscore = false;
+    totalScore = Math.round(totalScore);
+    for(var i = 0; i < scoreboard.length; i++ ){
+      //controlla che sia entrato nella leaderboard
+      if(totalScore > scoreboard[i].points){
+        isHighscore = true;
+      }
+    }
+    if(isHighscore){
+      addSelfToLeaderboard();
+    }
+    scoreboard.sort(function(a, b) {
+      return parseFloat(b.points) - parseFloat(a.points);
+    });
+    if(isHighscore){
+      savenewleaderboard();
+    }
+    $(document.createElement('div')).attr('id', 'leaderboard').appendTo('#frame');
+    $(document.createElement('h1')).text("Leader Board").attr('id', 'leadbTitle').appendTo('#leaderboard');
+    //Description row
+    $(document.createElement('div')).attr('id', 'descRow').addClass('leadRow').appendTo('#leaderboard');  
+    $(document.createElement('div')).attr('id', 'firstCelldesc').appendTo('#descRow');
+    $(document.createElement('p')).text("Nome").appendTo('#firstCelldesc');
+    $(document.createElement('div')).attr('id', 'secondCelldesc').appendTo('#descRow');
+    $(document.createElement('p')).text("Punteggio").appendTo('#secondCelldesc');
+    $(document.createElement('div')).attr('id', 'thirdCelldesc').appendTo('#descRow');
+    $(document.createElement('p')).text("Tempo").appendTo('#thirdCelldesc');
+    //Scores
+    for(var i = 0; i < scoreboard.length; i++ ){
+      if(i % 2 == 0){
+        $(document.createElement('div')).attr('id', 'leadRow'+[i]).addClass('leadRow').appendTo('#leaderboard');  
+      }
+      else{
+        $(document.createElement('div')).attr('id', 'leadRow'+[i]).addClass('oddRows').addClass('leadRow').appendTo('#leaderboard');  
+      }      
+      $(document.createElement('div')).attr('id', 'firstCell'+[i]).appendTo('#leadRow'+[i]);
+      $(document.createElement('p')).text(scoreboard[i].name).appendTo('#firstCell' +[i]);
+      $(document.createElement('div')).attr('id', 'secondCell'+[i]).appendTo('#leadRow'+[i]);
+      $(document.createElement('p')).text(scoreboard[i].points).appendTo('#secondCell' +[i]);
+      $(document.createElement('div')).attr('id', 'thirdCell'+[i]).appendTo('#leadRow'+[i]);
+      $(document.createElement('p')).text(scoreboard[i].time).appendTo('#thirdCell' +[i]);
+    }
+    $(document.createElement('div')).attr('id', 'continua').appendTo('#frame');
+    $(document.createElement('button')).text("Ricomincia").attr('id', 'buttonStart').click(function(){location.reload();}).appendTo('#continua');
+  }
+  function savenewleaderboard(){
+    var xhr = new XMLHttpRequest();
+    xhr.open("PUT", scoreurl, true);
+    xhr.setRequestHeader("Content-Type", "application/json");
+    xhr.onreadystatechange = function () {
+    };
+    var data = JSON.stringify(scoreboard);
+    xhr.send(data);
+  }
+  function addSelfToLeaderboard(){
+    $(document.createElement('h2')).attr('id','greetings').text('Complimenti! Sei entrato nella Leaderboard!').insertAfter('#question');
+    var name = prompt("Inserisci il tuo nome!");
+    if (name == null) {
+      name = "Giocatore Anonimo";
+    }
+    if(scoreboard.length >= scoreboardmaxlength){
+      scoreboard.pop();
+    }
+    scoreboard.push({name: name, points: Math.round(totalScore), time: timePassed});
+  }  
+  function startQuiz(){
+    document.getElementById("splashdiv").style.display = "none";
+    init();
+  }
+  function init(){
+    myVar = setInterval(function(){timePassed++}, 1000);
+    //load the questions
+    for(var i = 0; i < numberOfQuestionsPerQuiz; i++){
+      var randomNumber = Math.floor(Math.random() * (quizQuestions.length));
+      if(!questionsSelected.includes(randomNumber)){        
+        questionsSelected.push(randomNumber);
+        quiz.push(quizQuestions[randomNumber]);  
+      }
+      else {
+        i--;
+      }      
+    }
+    $(document.createElement('div')).attr('id','quizContainer').appendTo('#frame');
+    //add title
+    if(typeof quiztitle !== "undefined" && $.type(quiztitle) === "string"){
+      $(document.createElement('h1')).text(quiztitle).appendTo('#quizContainer');
+    } else {
+      $(document.createElement('h1')).text("Quiz").appendTo('#quizContainer');
+    }
+
+    //add pager and questions
+    if(typeof quiz !== "undefined" && $.type(quiz) === "array"){
+      //add pager
+      $(document.createElement('div')).addClass('bar').attr('id', 'infoBar').appendTo('#quizContainer');
+      $(document.createElement('p')).addClass('pager').attr('id','pager').text('Domanda 1 di ' + quiz.length).appendTo('#infoBar');
+      $(document.createElement('div')).attr('id','progressBar').appendTo('#infoBar'); $(document.createElement('div')).addClass('bar').attr('id', 'secBar').appendTo('#progressBar');
+      //add first question
+      $(document.createElement('h2')).addClass('question').attr('id', 'question').text(quiz[0]['question']).appendTo('#quizContainer');
+      //add image if present
+      if(quiz[0].hasOwnProperty('image') && quiz[0]['image'] != ""){
+        $(document.createElement('img')).addClass('question-image').attr('id', 'question-image').attr('src', quiz[0]['image']).appendTo('#quizContainer');
+      }
+      $(document.createElement('p')).addClass('explanation').attr('id','explanation').html('&nbsp;').appendTo('#quizContainer');
+
+
+
+      //questions holder
+      $(document.createElement('ul')).attr('id', 'choice-block').appendTo('#quizContainer');
+
+      //add choices
+      addChoices(quiz[0]['choices']);
+
+      //add submit button
+      $(document.createElement('div')).addClass('choice-box').attr('id', 'submitbutton').text('Conferma').css({'font-weight':700,'color':'#222'}).appendTo('#quizContainer');
+      barWidth = document.getElementById('progressBar').offsetWidth;      
+      setupButtons();
+      progress(secondsToAnswer,secondsToAnswer, $('#progressBar'), true);
+      RandomizeBarColors();
+    }
+  }
+  splashPage();
+  caricaPunteggi(function(response) {
+    scoreboard = JSON.parse(response);
+   });
+  caricaDomande(function(response) {
+    quizQuestions = JSON.parse(response);
+  });
+});
