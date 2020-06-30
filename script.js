@@ -31,7 +31,7 @@ jQuery(document).ready(function($){
       
   function caricaPunteggi(callback) {
     var xobj = new XMLHttpRequest();
-	xobj.open('GET', scoreurl, true);
+	xobj.open('GET', scoreurl+"/latest", true);
     xobj.overrideMimeType("application/json");
 	xobj.setRequestHeader("secret-key", secretKey);    
     xobj.onreadystatechange = function () {
@@ -266,6 +266,7 @@ jQuery(document).ready(function($){
     };
     var data = JSON.stringify(scoreboard);
     xhr.send(data);
+	
   }
   function addSelfToLeaderboard(){
     $(document.createElement('h2')).attr('id','greetings').text('Complimenti! Sei entrato nella Leaderboard!').insertAfter('#question');
