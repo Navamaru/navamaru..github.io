@@ -206,7 +206,7 @@ jQuery(document).ready(function($){
   function splashPage(){
     $(document.createElement('div')).attr('id', 'splashdiv').appendTo('#frame');
     $(document.createElement('h1')).text(quiztitle).attr('id', 'textlogosplash').appendTo('#splashdiv');
-    $(document.createElement('img')).attr('id', 'imageLogo').attr('src','https://www.ilmassimodeigiocattoli.it/wp-content/uploads/robot-anni-70-e-80.jpg').appendTo('#splashdiv');
+    $(document.createElement('img')).attr('id', 'imageLogo').attr('src','https://raw.githubusercontent.com/Navamaru/navamaru.github.io/master/robot.jpg').appendTo('#splashdiv');
     $(document.createElement('h3')).text(quizdesc).attr('id', 'descQuiz').appendTo('#splashdiv');
     $(document.createElement('button')).text("Inizia").attr('id', 'buttonStart').click(function(){startQuiz()}).appendTo('#splashdiv');
   }
