@@ -1,27 +1,521 @@
 <!DOCTYPE html>
-<html lang="en" >
+<html>
 <head>
-  <meta charset="UTF-8">
-  <meta name="description" content="Metti alla prova la tua conoscenza dei cartoni animati!">
-  <link rel="icon" type="image/x-icon" href="https://github.com/Navamaru/navamaru.github.io/blob/master/gundam.png" />
-  <title>Cartoon Quiz!</title>
-  <link rel="stylesheet" href="./style.css">
+  <title>Relationship Explorer</title>
+  <script src="https://cdn.jsdelivr.net/npm/echarts/dist/echarts.min.js"></script>
+  <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      overflow: hidden;
+    }
+
+    #chart {
+      width: 100%;
+      height: calc(100% - 30px);
+    }
+
+    #search-input {
+      width: 100%;
+      height: 30px;
+      padding: 5px;
+      box-sizing: border-box;
+      border: none;
+      font-size: 14px;
+    }
+	 #search-input {
+    width: 100%;
+    height: 30px;
+    padding: 5px;
+    box-sizing: border-box;
+    border: none;
+    font-size: 14px;
+    background-color: #f2f2f2;
+    border-radius: 5px;
+    outline: none;
+    transition: background-color 0.3s;
+  }
+
+  #search-input:focus {
+    background-color: #e6e6e6;
+  }
+  #search-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+#search-input-initial {
+  padding: 10px;
+  font-size: 16px;
+}
+
+#chart {
+  display: none;
+  width: 100vw;
+  height: 100vh;
+}
+
+  </style>
 </head>
 <body>
-<!-- partial:index.partial.html -->
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <title>Quiz</title>
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-  </head>
-  <body>
-    <div id="frame" role="content"></div>
-  </body>
-</html>
-<!-- partial -->
-  <script  src="./script.js"></script>
+  <input type="text" id="search-input" placeholder="Search Entity" />
+  <div id="search-container">
+	<label for="search-initial-input">Enter an entity to search for:</label>
+	<input type="text" id="search-initial-input" placeholder="Entity Name" />
+  </div>  
+  <div id="chart"></div>
 
+  <script>
+  const sizeOfElementsWhenHighlited = 100;
+  const defaultElementsSize = 80;
+  const defaultLineWidth = 1;
+  const highlitedLineWidth = 2;
+  const defaultLineColor = "#ddd";
+  const highlitedLineColor = "green";
+  const highlitedElementColor = "#a3e0ff";
+  const defaultElementColor = "#66ccff";
+  const defaultLabelColor = "#666";
+  const highlitedLabelColor = "#3f9f3f";
+  const defaultLabelSize = 10;
+  const highlitedLabelSize = 14;
+  const labelMultiplier = 20;
+  // Dati delle entità
+  let entities = [];
+
+    // Creazione dei nodi e dei collegamenti
+    var nodes = [];
+    var links = [];
+	links = links.flat();
+    // Configurazione del grafico
+    var option = {
+      series: [
+        {
+          type: 'graph',
+          layout: 'force',
+          roam: true,
+          symbol: 'rect',
+          symbolSize: defaultElementsSize,
+          edgeSymbol: ['circle', 'arrow'],
+          edgeSymbolSize: [4, 10],
+		  color: defaultElementColor,
+          edgeLabel: {
+            show: true,
+			formatter: function(params,i) {
+			  var relationship = params.data.relationshipName || '';
+			  return `{label|${relationship}}`;
+			},
+			rich: {
+			  label: {
+				color: defaultLabelColor,
+				fontSize: 12,
+				align: 'center'
+			  }
+			}
+          },
+          force: {
+            repulsion: 6000,
+            edgeLength: [500, 2500]
+          },
+          data: nodes,
+          links: links,
+		  dataZoom: [
+			{
+			  type: 'inside',
+			  start: 0,
+			  end: 5
+			}
+		  ]
+        }		
+      ]
+    };
+
+    // Inizializzazione del grafico
+    var chart = echarts.init(document.getElementById('chart'));
+    chart.setOption(option);
+	
+	// Aggiungi una variabile per tenere traccia dell'entità selezionata
+	var selectedEntity = null;
+
+	// Aggiungi un gestore di eventi per il clic sull'entità
+	chart.on('click', function(params) {
+	if (params.dataType === 'node') {
+		var clickedEntity = params.data;
+		nodes = nodes.flat();
+		var selectedEntity = nodes.filter((n) => n.id == params.data.id);
+		var labelWidth = selectedEntity[0].name.length * labelMultiplier;
+		resetStyle();
+		const clickedIndex = entities.findIndex(function(e) {
+			return e.id === selectedEntity[0].id;
+		});
+
+		// Evidenzia l'entità cliccata con un bordo verde
+		selectedEntity[0].itemStyle = {
+		borderColor: 'green',
+		borderWidth: highlitedLineWidth,
+		color: highlitedElementColor
+		};
+		selectedEntity[0].symbolSize = [labelWidth, defaultElementsSize];	
+
+		// Evidenzia le linee delle relazioni dell'entità cliccata con un colore verde e un bordo di 2px
+		links.flat().forEach(function(link) {
+			const targetIndex = entities.findIndex(function(e) {
+				return e.id === link.target;
+			});
+			const sourceIndex = entities.findIndex(function(e) {
+				return e.id === link.source;
+			});
+		if (link.source === sourceIndex || link.target === targetIndex) {
+			link.lineStyle = {
+			color: highlitedLineColor,
+			width: highlitedLineWidth,
+			z: 300
+			};
+			link.label = {
+			formatter: link.label.formatter,
+			color: highlitedLabelColor, // Imposta il colore verde,
+			fontSize: highlitedLabelSize,
+			fontWeight: 'bold'
+			};
+		}
+		});
+		// Nascondi le entità non collegate all'entità cliccata
+		nodes.forEach(function(node) {
+		if (node.id !== clickedIndex && !isConnected(clickedIndex, node.id)) {
+			node.itemStyle = {
+			opacity: 0.2 // Riduci l'opacità delle entità non collegate
+			};
+			node.label.show = false; // Nascondi l'etichetta delle entità non collegate
+		}
+		});
+		
+		// Aggiorna la variabile dell'entità selezionata
+		selectedEntity = clickedEntity;
+
+		// Aggiorna il grafico
+		chart.setOption(option);
+	}
+	});
+
+	// Aggiungi l'evento di ascolto per la pressione del tasto Invio sull'input box
+	var searchInputInit = document.getElementById('search-initial-input');
+	searchInputInit.addEventListener('keyup', function(event) {
+	if (event.keyCode === 13) {
+		// Premuto il tasto Invio
+
+		// Nascondi l'input box
+		document.getElementById('search-container').style.display = 'none';
+
+		// Mostra il grafico
+		document.getElementById('chart').style.display = 'block';
+
+		// Chiamata alla funzione per ottenere le relazioni delle entità
+		getRelationships(entities, nodes, links);
+	}
+	});
+
+    // Gestione della ricerca e dell'evidenziazione
+	var searchInput = document.getElementById('search-input');
+	var highlightedEntity = null; // Entità attualmente evidenziata
+
+	searchInput.addEventListener('keyup', function(event) {
+	  if (event.keyCode === 13) { // Invio
+		var searchValue = searchInput.value.trim().toLowerCase();
+		var matchingNodes = nodes.flat().filter(function(node) {
+		  return (
+			node.name.toLowerCase() === searchValue ||
+			node.logicalName.toLowerCase() === searchValue
+		  );
+		});
+	
+	
+    if (matchingNodes.length > 0) {
+      var selectedNode = matchingNodes[0];
+
+      
+      resetStyle();
+		var labelWidth = selectedNode.name.length * labelMultiplier;
+      // Evidenzia l'entità trovata con un bordo
+      selectedNode.itemStyle = {
+        borderColor: 'green',
+        borderWidth: highlitedElementColor,
+		color: highlitedElementColor
+      };
+	  selectedNode.symbolSize = [labelWidth, defaultElementsSize];
+	  highlightEntity(selectedNode);
+	  
+      // Evidenzia le linee delle relazioni dell'entità trovata con un colore rosso e un bordo di 2px
+      links.forEach(function(link) {
+		const targetIndex = entities.findIndex(function(e) {
+          return e.id === link.target;
+        });
+		const sourceIndex = entities.findIndex(function(e) {
+          return e.id === link.source;
+        });
+        if (link.source === sourceIndex || link.target === targetIndex) {
+          link.lineStyle = {
+            color: highlitedLineColor,
+            width: highlitedLineWidth
+          };
+        }
+      });
+
+      // Aggiorna la variabile dell'entità evidenziata
+      highlightedEntity = selectedNode;
+
+		// Nascondi le entità non collegate all'entità cliccata
+		nodes.forEach(function(node) {
+		  if (node.id !== selectedNode.id && !isConnected(selectedNode.id, node.id)) {
+			node.itemStyle = {
+			  opacity: 0.2 // Riduci l'opacità delle entità non collegate
+			};
+			node.label.show = false; // Nascondi l'etichetta delle entità non collegate
+		  }
+		});
+
+		// Ripristina lo stile dell'entità e delle relazioni precedentemente evidenziate
+		if (highlightedEntity) {
+		  
+
+		  // Ripristina lo stile delle relazioni
+		  links.forEach(function(link) {
+			var sourceId = link.source;
+			var targetId = link.target;
+			var relationName = link.label.relName;
+
+			// Aggiorna il colore dell'etichetta in base alle entità evidenziate
+			if (sourceId === highlightedEntity.id || targetId === highlightedEntity.id) {
+			  link.label.color = highlitedLabelColor;
+			  link.label.fontSize = highlitedLabelSize;
+			  link.label.fontWeight = 'bold';
+			} 
+		  });
+
+		  // Aggiorna il grafico con le modifiche
+		  chart.setOption(option);
+		}
+    }
+  }
+});
+function getRelationships(entities = [], nodes = [], links = []){
+	const organizationUrl = "https://" + window.location.hostname;
+	const searchInput = document.getElementById('search-initial-input');
+
+	var req = new XMLHttpRequest();
+	req.open("GET", organizationUrl + "/api/data/v9.0/EntityDefinitions(LogicalName='"+searchInput.value+"')?$expand=OneToManyRelationships($select=SchemaName,ReferencedEntity,ReferencedAttribute,ReferencingEntity,ReferencingAttribute)", true);
+	req.setRequestHeader("OData-MaxVersion", "4.0");
+	req.setRequestHeader("OData-Version", "4.0");
+	req.setRequestHeader("Accept", "application/json");
+	req.setRequestHeader("Content-Type", "application/json; charset=utf-8");
+	req.setRequestHeader("Prefer", "odata.include-annotations=\"*\"");
+	req.onreadystatechange = function() {
+		if (this.readyState === 4) {
+			req.onreadystatechange = null;
+			if (this.status === 200) {
+				var result = JSON.parse(this.response);
+				const entityTypeCode = result["ObjectTypeCode"];
+				const oneToManyRelationships = result["OneToManyRelationships"];
+
+				const entita = {
+					displayName: result["DisplayName"]["UserLocalizedLabel"]["Label"],
+					logicalName: result["LogicalName"],
+					id: entityTypeCode,
+					relations: []
+				}
+				
+				
+				let referencedentities = [];
+				for (var i = 0; i < oneToManyRelationships.length; i++) {
+					var relationship = oneToManyRelationships[i];
+					entita.relations.push({
+						targetEntity: relationship["ReferencedEntity"],
+						sourceEntity: relationship["ReferencingEntity"],
+						relationshipName: relationship["ReferencedAttribute"]
+					});
+					if(!referencedentities.some((i) => i.entityName == relationship["ReferencingEntity"])){
+						referencedentities.push({
+							displayName: relationship["SchemaName"],
+							logicalName: relationship["ReferencingEntity"],
+							relations: [{
+								targetEntity: result["LogicalName"],
+								sourceEntity: relationship["ReferencingEntity"],
+								relationshipName: relationship["ReferencedAttribute"]
+							}]
+						});
+					}
+				}
+				entities.push(entita);
+
+				
+				nodes.push([AddEntity(entita, entityTypeCode), ...referencedentities.map((e, i) => {
+					const index = i == entityTypeCode ? 99999999: i;
+					return AddEntity(e, index);
+				})]);
+				links = links.flat(links.push(addRelations(entita, entityTypeCode, [])));
+				option.series[0].data = option.series[0].data.flat();
+				option.series[0].links = option.series[0].links.flat()
+				chart.setOption(option);
+			} else {
+				console.log(this.statusText);
+			}
+		}
+	};
+	req.send();
+}
+function AddEntity(entity, index){
+	const labelWidth = entity.displayName.length * labelMultiplier;
+	  const entityToAdd =  {
+		id: index,
+		name: entity.displayName,
+		draggable: true,
+		logicalName: entity.logicalName,
+		symbolSize: [labelWidth, defaultElementsSize],
+		itemStyle: {
+		  color: defaultElementColor
+		},
+		label: {
+		  formatter: [
+			'{name|' + entity.displayName + '}',
+			'{subName|' + entity.logicalName + '}'
+		  ].join('\n'),
+		  rich: {
+			name: {
+			  fontSize: 16,
+			  color: '#333',
+			  align: 'center'
+			},
+			subName: {
+			  fontSize: 13,
+			  color: '#666',
+			  align: 'center'
+			}
+		  },
+		  show: true,
+		  position: 'inside',
+		  distance: 5,
+		  z: 1 // etichette delle entità
+		}
+	  };
+	  if(!entities.some((e) => e.logicalName == entity.logicalName)){
+		entities.push(entityToAdd);
+	  }
+	  
+	  return entityToAdd;
+}
+function addRelations(entity, index, exlinks) {
+	let links = [...exlinks];
+	entity.relations.forEach(function(relation) {
+        const targetIndex = entities.findIndex(function(e) {
+          return e.logicalName === relation.targetEntity;
+        });
+		const sourceIndex = entities.findIndex(function(e) {
+          return e.logicalName === relation.sourceEntity;
+        });
+
+        if (targetIndex !== -1 && !exlinks.some((i)=>{ i.source == index && i.target == targetIndex})) {
+          links.push({
+            source: sourceIndex,
+            target: targetIndex,
+            lineStyle: {
+              color: defaultLineColor,
+              width: defaultLineWidth,
+			  zIndex: function(params) {
+				if (params.color === highlitedLineColor) {
+				  return 3; // Imposta uno z-index più alto per le linee verdi evidenziate
+				} else if (highlightedLinks.includes(params.dataIndex)) {
+				  return 2; // Imposta uno z-index superiore per le altre linee evidenziate
+				} else {
+				  return 0; // Imposta uno z-index inferiore per le linee non evidenziate
+				}
+			  }
+            },
+            label: {
+			  relName: relation.relationshipName,
+              formatter: relation.relationshipName,
+              fontSize: defaultLabelSize,
+              color: defaultLabelColor,
+              position: 'middle',
+              distance: 10,
+              z: 2 // etichette delle linee
+            }
+          });
+        }
+      });
+	return links;
+}
+// Funzione di utilità per verificare se due entità sono collegate
+function isConnected(sourceId, targetId) {
+  return links.flat().some(function(link) {
+    return (link.source === sourceId && link.target === targetId) ||
+      (link.source === targetId && link.target === sourceId);
+  });
+}
+function resetStyle() {
+	// Ripristina lo stile delle entità precedentemente evidenziate
+    nodes.forEach(function(node) {
+		var labelWidth = node.name.length * labelMultiplier;
+		node.itemStyle = null;
+		node.symbolSize = [labelWidth, defaultElementsSize]; // Ripristina la dimensione originale
+		node.label.show = true; // Mostra l'etichetta
+    });
+	
+	links.flat().forEach(function(link) {
+		link.lineStyle.color = defaultLineColor;
+		link.lineStyle.width = defaultLineWidth
+		link.label.color = defaultLabelColor;
+		link.label.fontWeight = "200";
+		link.label.fontSize = defaultLabelSize;
+	});
+}
+	
+	function highlightEntity(selectedNode) {
+  // Resetta lo stato di evidenziazione di tutte le entità e linee
+  nodes.forEach(function(node) {
+    if (node.label && typeof node.label.show !== 'undefined') {
+      node.label.show = true;
+    }
+    node.z = 0;
+  });
+
+  links.flat().forEach(function(link) {
+    link.lineStyle.emphasis = false;
+    link.z = 0;
+  });
+
+  // Evidenzia l'entità selezionata
+  selectedNode.label = selectedNode.label || {};
+  selectedNode.label.show = true;
+  selectedNode.z = 2; // Imposta un valore di z superiore per mettere l'entità in primo piano
+
+  // Evidenzia tutte le entità e linee collegate
+  links.flat().forEach(function(link) {
+    if (link.source === selectedNode.id || link.target === selectedNode.id) {
+      var sourceNode = nodes[link.source];
+      var targetNode = nodes[link.target];
+
+      sourceNode.label = sourceNode.label || {};
+      targetNode.label = targetNode.label || {};
+
+      sourceNode.label.show = true;
+      targetNode.label.show = true;
+
+      link.lineStyle.emphasis = true;
+
+      sourceNode.z = 2; // Imposta un valore di z superiore per mettere l'entità in primo piano
+      targetNode.z = 2; // Imposta un valore di z superiore per mettere l'entità in primo piano
+      link.z = 1; // Imposta un valore di z superiore per mettere la linea in primo piano
+    }
+  });
+
+  // Aggiorna il grafico con le modifiche
+  chart.setOption(option);
+}
+
+
+
+  </script>
 </body>
 </html>
