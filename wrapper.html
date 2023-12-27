@@ -1,0 +1,24 @@
+<html><head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PBI</title>
+    <link rel="stylesheet" href="wrapper.css">
+    <script>
+      window.Xrm = parent.Xrm;
+    </script>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="../../../orb_/ORBIS/Core/Core.js"></script>
+    <script type="module" src="wrapper.js"></script>
+  </head>
+  <body id="app" onfocusout="parent.setEmailRange();" style="overflow-wrap: break-word;">
+    <select v-model="report" @change="onReportChanged" class="report-selector" :disabled="reports.length === 0">
+      <option v-if="!reports.length">No reports available.</option>
+      <option :value="r" v-for="r of reports">{{r.name}}</option>
+    </select>
+    <iframe v-if="frameUrl" id="frame" :src="frameUrl" frameborder="0" @error="onFrameError" @load="onFrameLoad"></iframe>
+    <div v-if="canaryFailed" class="canary-failed">
+      Unable to load report. Maybe you are not connected to VPN?
+    </div> 
+  
+  </body></html>
